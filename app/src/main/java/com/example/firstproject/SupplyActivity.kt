@@ -14,10 +14,7 @@ import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import com.zarinpal.ewallets.purchase.ZarinPal
 import kotlinx.android.synthetic.main.pay.*
@@ -116,9 +113,11 @@ class SupplyActivity : AppCompatActivity(){
         val rg = promptsView
             .findViewById<View>(R.id.radioGroup) as RadioGroup
         val txt = promptsView
-            .findViewById<View>(R.id.editTextTextPersonName) as EditText
+            .findViewById<View>(R.id.address) as EditText
         val rb = promptsView
             .findViewById<View>(R.id.radioButton2) as RadioButton
+        val payButton = promptsView
+            .findViewById<View>(R.id.pay_btn) as Button
 
 
         val alertDialog = alertDialogBuilder.create()

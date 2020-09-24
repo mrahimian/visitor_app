@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.example.firstproject.StartActivity.Companion.admins
 import com.example.firstproject.StartActivity.Companion.users
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -22,21 +23,33 @@ class LoginActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     public fun login(v : View){
-        if (!users.containsKey(username.text.toString())){
+        if (!users.containsKey(username.text.toString()) && !admins.containsKey(username.text.toString()) ){
             var toast = Toast.makeText(this,"نام کاربری صحیح نمی باشد",Toast.LENGTH_SHORT)
             toast.view.background = getDrawable(R.drawable.warning_toast)
             toast.show()
             return
         }
-        if (!users.get(username.text.toString())?.equals(password.text.toString())!!){
-            var toast = Toast.makeText(this,"نام کاربری و رمز عبور مطابقت ندارند",Toast.LENGTH_SHORT)
-            toast.view.background = getDrawable(R.drawable.warning_toast)
-            toast.show()
-            return
+        if(users.containsKey(username.text.toString())) {
+            if (!users.get(username.text.toString())?.equals(password.text.toString())!!) {
+                var toast =
+                    Toast.makeText(this, "نام کاربری و رمز عبور مطابقت ندارند", Toast.LENGTH_SHORT)
+                toast.view.background = getDrawable(R.drawable.warning_toast)
+                toast.show()
+                return
+            }
+            startActivity(Intent(this, MainActivity::class.java))
         }
-//        password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        else{
+            if (!admins.get(username.text.toString())?.equals(password.text.toString())!!) {
+                var toast =
+                    Toast.makeText(this, "نام کاربری و رمز عبور مطابقت ندارند", Toast.LENGTH_SHORT)
+                toast.view.background = getDrawable(R.drawable.warning_toast)
+                toast.show()
+                return
+            }
+            startActivity(Intent(this, AdminActivity::class.java))
+        }
 
-        startActivity(Intent(this , MainActivity::class.java))
     }
 
     public fun seen(v : View){

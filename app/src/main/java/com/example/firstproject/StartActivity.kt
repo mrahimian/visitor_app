@@ -31,6 +31,7 @@ class StartActivity : AppCompatActivity() {
 
     companion object {
         val users: HashMap<String, String> = hashMapOf()
+        val admins: HashMap<String, String> = hashMapOf()
         val stockInfo : ArrayList<SearchInfo> = arrayListOf()
         val parts : HashSet<String> = hashSetOf()
         val cars : HashSet<String> = hashSetOf()
@@ -93,6 +94,8 @@ class StartActivity : AppCompatActivity() {
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         override fun doInBackground(vararg params: String?): String {
+            admins.put("mahdi","admin")
+
             val _user = "sa"
             val _pass = "hamdi@0912"
             val _DB = "yadak"
@@ -111,14 +114,24 @@ class StartActivity : AppCompatActivity() {
 
                 val queryStmt =
                     "select * from dbo.users2"
+                val queryStmt2 =
+                    "select * from dbo.adminUsers"
 
                 val stmt = conn.createStatement()
+                val stmt2 = conn.createStatement()
                 val rslt = stmt.executeQuery(queryStmt)
+                val rslt2 = stmt2.executeQuery(queryStmt2)
 
                 while (rslt.next()) {
                     var user = rslt.getString(1)
                     var pass = rslt.getString(2)
                     users.put(user, pass)
+                }
+
+                while (rslt2.next()) {
+                    var user = rslt2.getString(1)
+                    var pass = rslt2.getString(2)
+                    admins.put(user, pass)
                 }
 
                 val tableInfoQuery = "select * from dbo.Stock"
@@ -128,16 +141,17 @@ class StartActivity : AppCompatActivity() {
                     var id = result.getString(1)
                     var partName = result.getString(2)
                     var carName = result.getString(3)
-                    var carModel = result.getString(4)
-                    var carChassis = result.getString(5)
-                    var brandName = result.getString(6)
-                    var country = result.getString(7)
-                    var price = result.getString(8)
-                    var supplierId = result.getString(9)
-                    var stockCount = result.getString(10)
-                    var description = result.getString(12)
-                    var lastModificationTime = result.getString(15)
-                    stockInfo.add(SearchInfo(id.toInt(),partName,carName,carModel,carChassis,brandName,country,price.toInt(),supplierId,stockCount.toInt(),description,lastModificationTime))
+                    var creationTime = result.getString(4)
+                    var carModel = result.getString(5)
+                    var carChassis = result.getString(6)
+                    var brandName = result.getString(7)
+                    var country = result.getString(8)
+                    var price = result.getString(9)
+                    var supplierId = result.getString(10)
+                    var stockCount = result.getString(11)
+                    var description = result.getString(13)
+                    var lastModificationTime = result.getString(16)
+                    stockInfo.add(SearchInfo(id.toInt(),partName,carName,creationTime,carModel,carChassis,brandName,country,price.toInt(),supplierId,stockCount.toInt(),description,lastModificationTime))
                 }
                 fill()
 
@@ -154,6 +168,7 @@ class StartActivity : AppCompatActivity() {
                 stmt.close()
                 conn.close()
                 rslt.close()
+                rslt2.close()
 
             } catch (se: SQLException) {
                 runOnUiThread {

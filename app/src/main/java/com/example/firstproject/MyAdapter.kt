@@ -28,7 +28,7 @@ class MyAdapter(private val info: List<SearchInfo>) : RecyclerView.Adapter<MyAda
                 intent.putExtra("carName",info.get(position).carName)
                 intent.putExtra("creationTime",info.get(position).creationTime)
                 intent.putExtra("carModel",info.get(position).carModel)
-                intent.putExtra("brand",info.get(position).brandName)
+                intent.putExtra("brandName",info.get(position).brandName)
                 intent.putExtra("carChassis",info.get(position).carChassis)
                 intent.putExtra("partName",info.get(position).partName)
                 intent.putExtra("price",info.get(position).price)
