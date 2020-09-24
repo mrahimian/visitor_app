@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "393976924350",
+    "firebase_url": "https://visitorsapp-dc49c.firebaseio.com",
+    "project_id": "visitorsapp-dc49c",
+    "storage_bucket": "visitorsapp-dc49c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393976924350:android:682d208cf9c3c9127276ef",
+        "android_client_info": {
+          "package_name": "com.example.firstproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393976924350-ct352nl9gdqqnu0cndnug73pe7anqpbl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP_P2wyKxxDxdV54FOvIBxYYZ3ZeE6p94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393976924350-ct352nl9gdqqnu0cndnug73pe7anqpbl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
