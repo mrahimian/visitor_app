@@ -129,7 +129,7 @@ class SupplyActivity : AppCompatActivity(){
     fun payment(amount: Long) {
         var purchase = ZarinPal.getPurchase(this)
         var payment = ZarinPal.getPaymentRequest()
-        payment.merchantID = "b4dade44-9e77-457c-8834-98cf99ac34ca"
+        payment.merchantID = "*************"
         payment.amount = amount
         Log.e(amount.toString(), "amount")
         payment.description = "تست برنامه"
