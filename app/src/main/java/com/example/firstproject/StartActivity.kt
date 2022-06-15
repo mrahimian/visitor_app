@@ -97,9 +97,9 @@ class StartActivity : AppCompatActivity() {
             admins.put("mahdi","admin")
 
             val _user = "sa"
-            val _pass = "hamdi@0912"
+            val _pass = "**********"
             val _DB = "yadak"
-            val _server = "176.9.199.181"
+            val _server = "**********"
             val policy = StrictMode.ThreadPolicy.Builder()
                 .permitAll().build()
             StrictMode.setThreadPolicy(policy)
